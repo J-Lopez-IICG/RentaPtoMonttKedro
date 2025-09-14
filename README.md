@@ -7,7 +7,7 @@ Este proyecto se desarrolló para abordar el problema de la falta de datos estru
 Proceso de Análisis
 
 El proyecto siguió un ciclo de vida de análisis de datos de principio a fin:
-Extracción de datos: Se creó un script en Python utilizando la librería Selenium para automatizar la extracción de datos de un sitio web de bienes raíces. Este script fue diseñado para superar desafíos como la paginación y la estructura cambiante del sitio, obteniendo información sobre más de 300 arriendos.
+Extracción de datos: Se creó un script en Python utilizando la librería Selenium para automatizar la extracción de datos de un sitio web de bienes raíces. Este script fue diseñado para superar desafíos como la paginación y la estructura cambiante del sitio, obteniendo información sobre más de 600 arriendos.
 Limpieza y transformación: Los datos extraídos fueron procesados en Power Query. Se realizaron transformaciones clave como la conversión de precios de UF a pesos chilenos, la estandarización de la cantidad de dormitorios y baños, y el manejo de valores faltantes.
 Análisis y visualización: En Power BI, se construyeron medidas clave (KPIs) y se crearon visualizaciones interactivas para explorar el conjunto de datos y presentar los hallazgos de forma clara.
 
