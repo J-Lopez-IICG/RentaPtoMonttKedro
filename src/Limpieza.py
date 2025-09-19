@@ -1,4 +1,5 @@
-# Contenido para tu script principal (ej: limpieza_datos.py)
+# Contenido para tu script principal de limpieza de datos
+# Limpieza.py
 
 import pandas as pd
 import numpy as np
