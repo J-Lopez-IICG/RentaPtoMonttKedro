@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.edge.service import Service
 import time
 import pandas as pd
+import os
+from unidecode import unidecode
 
 # Reemplaza con la ruta real a tu msedgedriver.exe
 driver_path = 'C:/Users/javie/Documents/edgedriver_win64/msedgedriver.exe'
@@ -29,11 +31,13 @@ for page_number in range(0, 700, 48):
 
         for post in posts:
             try:
-                title = post.find_element(By.CLASS_NAME, "poly-component__title-wrapper").text.replace('\n', ' ')
-                type_of_home = post.find_element(By.CLASS_NAME, "poly-component__headline").text.replace('\n', ' ')
-                price = post.find_element(By.CLASS_NAME, "poly-component__price").text.replace('\n', ' ')
-                location = post.find_element(By.CLASS_NAME, "poly-component__location").text.replace('\n', ' ')
-                attributes = post.find_element(By.CLASS_NAME, "poly-component__attributes-list").text.replace('\n', ' ')
+                # --- 2. Aplicamos unidecode para limpiar el texto extraído ---
+                title = unidecode(post.find_element(By.CLASS_NAME, "poly-component__title-wrapper").text.replace('\n', ' '))
+                type_of_home = unidecode(post.find_element(By.CLASS_NAME, "poly-component__headline").text.replace('\n', ' '))
+                price = unidecode(post.find_element(By.CLASS_NAME, "poly-component__price").text.replace('\n', ' '))
+                location = unidecode(post.find_element(By.CLASS_NAME, "poly-component__location").text.replace('\n', ' '))
+                attributes = unidecode(post.find_element(By.CLASS_NAME, "poly-component__attributes-list").text.replace('\n', ' '))
+                
                 post_data = {
                     "Tipo_de_hogar": type_of_home,
                     "Titulo": title,
@@ -56,10 +60,22 @@ driver.quit()
 print("\n--- Extracción finalizada ---")
 print(f"Total de publicaciones extraídas: {len(all_posts)}")
 
+
 if all_posts:
     df = pd.DataFrame(all_posts)
+    
+    directorio = r'C:\Users\javie\Documents\GitHub\RentaPtoMonttWebScrapingPython-DashbPowerBi\data'
+    # --- 3. Cambiamos el nombre del archivo a .xlsx ---
+    nombre_archivo = 'arriendos_puerto_montt.xlsx'
+    
+    ruta_completa = os.path.join(directorio, nombre_archivo)
+    
+    os.makedirs(directorio, exist_ok=True)
+
     try:
-        df.to_csv('arriendos_puerto_montt.csv', index=False, sep='-')
-        print("Datos guardados exitosamente en 'arriendos_puerto_montt.csv'")
+        # --- 4. Usamos to_excel() para guardar el archivo ---
+        df.to_excel(ruta_completa, index=False)
+        print(f"Datos guardados exitosamente como Excel en:\n'{ruta_completa}'")
+        
     except Exception as e:
         print(f"Ocurrió un error al guardar el archivo: {e}")
