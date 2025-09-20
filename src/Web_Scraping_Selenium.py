@@ -1,17 +1,49 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.edge.service import Service
+from selenium.webdriver.edge.service import Service as EdgeService
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
+from requests.exceptions import ConnectionError
 import time
 import pandas as pd
 import os
 from unidecode import unidecode
 
-# Reemplaza con la ruta real a tu msedgedriver.exe
-driver_path = "C:/Users/javie/Documents/edgedriver_win64/msedgedriver.exe"
-service = Service(executable_path=driver_path)
+# --- Configuración Inteligente del WebDriver ---
+driver = None
+try:
+    # --- MÉTODO 1: Automático (Ideal para reproducibilidad) ---
+    print("Intentando configurar WebDriver automáticamente...")
+    service = EdgeService(EdgeChromiumDriverManager().install())
+    driver = webdriver.Edge(service=service)
+    print("WebDriver configurado automáticamente.")
 
-# Inicializa el navegador Edge
-driver = webdriver.Edge(service=service)
+except ConnectionError:
+    # --- MÉTODO 2: Manual (Como respaldo si falla la conexión a internet) ---
+    print("\nFalló la configuración automática por un problema de red.")
+    print("Intentando configurar WebDriver desde una ruta local...")
+
+    # Construye la ruta relativa al driver dentro del proyecto
+    script_dir = os.path.dirname(__file__)
+    project_root = os.path.dirname(script_dir)
+    driver_path = os.path.join(project_root, "driver", "msedgedriver.exe")
+
+    if os.path.exists(driver_path):
+        service = EdgeService(executable_path=driver_path)
+        driver = webdriver.Edge(service=service)
+        print(f"WebDriver configurado manualmente desde: {driver_path}")
+    else:
+        print("\n--- ERROR CRÍTICO ---")
+        print("No se pudo configurar el WebDriver.")
+        print("1. La descarga automática falló por un problema de red.")
+        print(f"2. No se encontró el driver manual en la ruta esperada: {driver_path}")
+        print(
+            "\nSOLUCIÓN: Descargue 'msedgedriver.exe' y colóquelo en la carpeta 'driver' en la raíz del proyecto."
+        )
+
+# Si el driver no se pudo inicializar por ningún método, detenemos el script.
+if not driver:
+    print("No se pudo inicializar el driver. Abortando ejecución.")
+    exit()
 
 all_posts = []
 offset = 1  # El primer resultado en la página
