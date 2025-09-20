@@ -1,41 +1,101 @@
-# Análisis de Mercado de Arriendos en Puerto Montt
+# RentaPtoMonttKedro
 
----
+[![Powered by Kedro](https://img.shields.io/badge/powered_by-kedro-ffc900?logo=kedro)](https://kedro.org)
 
-## Resumen del Proyecto
+## Overview
 
-Este proyecto se desarrolló para resolver el desafío de la **falta de datos estructurados** en el mercado de arriendos de Puerto Montt. El objetivo principal fue construir una solución de análisis de principio a fin, desde la **recolección de datos de la web** hasta la creación de un **dashboard interactivo** que ofrece una visión clara del mercado inmobiliario.
+This is your new Kedro project, which was generated using `kedro 1.0.0`.
 
----
+Take a look at the [Kedro documentation](https://docs.kedro.org) to get started.
 
-## Desafíos y Soluciones
+## Rules and guidelines
 
-El núcleo de este proyecto fue el desarrollo de un pipeline de datos robusto que demuestra las siguientes habilidades:
+In order to get the best out of the template:
 
-* **Web Scraping Dinámico:** Se utilizó **Python con Selenium** para automatizar la extracción de datos de un sitio web de bienes raíces. Esto fue crucial para manejar desafíos como la paginación y la estructura cambiante del sitio, obteniendo información sobre más de 600 arriendos.
+* Don't remove any lines from the `.gitignore` file we provide
+* Make sure your results can be reproduced by following a data engineering convention
+* Don't commit data to your repository
+* Don't commit any credentials or your local configuration to your repository. Keep all your credentials and local configuration in `conf/local/`
 
-* **Limpieza y Transformación de Datos:** Los datos extraídos fueron procesados en **Power Query** para garantizar su calidad. Se realizaron transformaciones clave como la estandarización de variables y la conversión de precios para un análisis consistente.
+## How to install dependencies
 
-* **Análisis con Power BI:** Se desarrollaron métricas clave **(KPIs)** y visualizaciones interactivas para explorar el conjunto de datos y presentar los hallazgos de forma clara, permitiendo la toma de decisiones informadas.
+Declare any dependencies in `requirements.txt` for `pip` installation.
 
----
+To install them, run:
 
-## Dashboard Interactivo y Hallazgos Clave
+```
+pip install -r requirements.txt
+```
 
-El análisis culminó en un dashboard en Power BI que sirve como una herramienta para explorar las dinámicas del mercado de arriendos.
+## How to run your Kedro pipeline
 
-**Explora el dashboard aquí:** [Análisis del Mercado de Arriendos en Power BI]( https://app.powerbi.com/view?r=eyJrIjoiZmEzMTI5OTctNDA2Zi00MTMyLWJiZjEtY2E3ZjI2MWEzZTI4IiwidCI6ImRmNGI2MzcyLWEwM2EtNDZmMC05YmY1LTdmOGQzNzhhMzMzNCIsImMiOjR9 )
+You can run your Kedro project with:
 
-**Hallazgos Principales:**
+```
+kedro run
+```
 
-* **Precio por m²:** El precio promedio por metro cuadrado de los arriendos es de 2.445 mil pesos, lo que sirve como un punto de referencia clave para evaluar la eficiencia de las propiedades.
-* **Correlación de Precios:** Se identificó una fuerte correlación positiva entre el tamaño de la propiedad (m²) y el precio de arriendo.
-* **Comparativa de Propiedades:** A pesar de que las casas tienen un precio de arriendo promedio más alto, los **departamentos son significativamente más caros por metro cuadrado**, un hallazgo crucial para quienes buscan maximizar el espacio por su inversión.
+## How to test your Kedro project
 
----
+Have a look at the file `tests/test_run.py` for instructions on how to write your tests. You can run your tests as follows:
 
-## Tecnologías y Código
+```
+pytest
+```
 
-* **Herramientas:** **Python, Selenium, Pandas, Power BI.**
-* **Código:** El código utilizado para la extracción y limpieza de datos está disponible en este repositorio, en la carpeta `src`.
+You can configure the coverage threshold in your project's `pyproject.toml` file under the `[tool.coverage.report]` section.
 
+
+## Project dependencies
+
+To see and update the dependency requirements for your project use `requirements.txt`. You can install the project requirements with `pip install -r requirements.txt`.
+
+[Further information about project dependencies](https://docs.kedro.org/en/stable/kedro_project_setup/dependencies.html#project-specific-dependencies)
+
+## How to work with Kedro and notebooks
+
+> Note: Using `kedro jupyter` or `kedro ipython` to run your notebook provides these variables in scope: `context`, 'session', `catalog`, and `pipelines`.
+>
+> Jupyter, JupyterLab, and IPython are already included in the project requirements by default, so once you have run `pip install -r requirements.txt` you will not need to take any extra steps before you use them.
+
+### Jupyter
+To use Jupyter notebooks in your Kedro project, you need to install Jupyter:
+
+```
+pip install jupyter
+```
+
+After installing Jupyter, you can start a local notebook server:
+
+```
+kedro jupyter notebook
+```
+
+### JupyterLab
+To use JupyterLab, you need to install it:
+
+```
+pip install jupyterlab
+```
+
+You can also start JupyterLab:
+
+```
+kedro jupyter lab
+```
+
+### IPython
+And if you want to run an IPython session:
+
+```
+kedro ipython
+```
+
+### How to ignore notebook output cells in `git`
+To automatically strip out all output cell contents before committing to `git`, you can use tools like [`nbstripout`](https://github.com/kynan/nbstripout). For example, you can add a hook in `.git/config` with `nbstripout --install`. This will run `nbstripout` before anything is committed to `git`.
+
+> *Note:* Your output cells will be retained locally.
+
+## Package your Kedro project
+
+[Further information about building project documentation and packaging your project](https://docs.kedro.org/en/stable/tutorial/package_a_project.html)
