@@ -1,16 +1,22 @@
 """Project pipelines."""
-from __future__ import annotations
 
-from kedro.framework.project import find_pipelines
+from typing import Dict
+
 from kedro.pipeline import Pipeline
 
+# Asegúrate que la siguiente línea es correcta
+from rentaptomonttkedro.pipelines import data_engineering as de
 
-def register_pipelines() -> dict[str, Pipeline]:
+
+def register_pipelines() -> Dict[str, Pipeline]:
     """Register the project's pipelines.
 
     Returns:
         A mapping from pipeline names to ``Pipeline`` objects.
     """
-    pipelines = find_pipelines()
-    pipelines["__default__"] = sum(pipelines.values())
-    return pipelines
+    data_engineering_pipeline = de.create_pipeline()
+
+    return {
+        "__default__": data_engineering_pipeline,
+        "de": data_engineering_pipeline,
+    }

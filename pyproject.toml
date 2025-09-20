@@ -28,3 +28,6 @@ attr = "rentaptomonttkedro.__version__"
 [tool.setuptools.packages.find]
 where = [ "src",]
 namespaces = false
+
+[tool.kedro_telemetry]
+project_id = "e2da9e2988a449318cedecdfb654b9ad"
