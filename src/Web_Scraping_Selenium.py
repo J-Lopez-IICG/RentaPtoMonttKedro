@@ -46,6 +46,7 @@ if not driver:
     exit()
 
 all_posts = []
+error_count = 0
 offset = 1  # El primer resultado en la página
 
 while True:
@@ -103,8 +104,8 @@ while True:
                 all_posts.append(post_data)
 
             except Exception:
-                # Si un post individual falla, lo saltamos y continuamos con el siguiente.
-                pass
+                # Si un post individual falla, lo saltamos y contamos el error.
+                error_count += 1
 
         # Avanzamos al siguiente grupo de resultados
         offset += 48
@@ -118,22 +119,24 @@ driver.quit()
 print("\n--- Extracción finalizada ---")
 
 print(f"Total de publicaciones extraídas: {len(all_posts)}")
-
+print(f"Total de publicaciones con error (omitidas): {error_count}")
 
 if all_posts:
     df = pd.DataFrame(all_posts)
 
-    directorio = r"C:\Users\javie\Documents\GitHub\RentaPtoMonttWebScrapingPython-DashbPowerBi\data"
-    # --- 3. Cambiamos el nombre del archivo a .xlsx ---
+    # --- Usar rutas relativas para guardar el archivo ---
+    script_dir = os.path.dirname(__file__)
+    project_root = os.path.dirname(script_dir)  # Sube un nivel desde 'src'
+    directorio_data = os.path.join(project_root, "data")
+
     nombre_archivo = "arriendos_puerto_montt.xlsx"
+    ruta_completa = os.path.join(directorio_data, nombre_archivo)
 
-    ruta_completa = os.path.join(directorio, nombre_archivo)
-
-    os.makedirs(directorio, exist_ok=True)
+    os.makedirs(directorio_data, exist_ok=True)
 
     try:
-        # --- 4. Usamos to_excel() para guardar el archivo ---
-        df.to_excel(ruta_completa, index=False)
+        # Para guardar en .xlsx, pandas necesita el motor 'openpyxl'
+        df.to_excel(ruta_completa, index=False, engine="openpyxl")
         print(f"Datos guardados exitosamente como Excel en:\n'{ruta_completa}'")
 
     except Exception as e:
