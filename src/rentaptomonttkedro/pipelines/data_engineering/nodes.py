@@ -75,7 +75,7 @@ def scrape_raw_data() -> pd.DataFrame:
                             post.find_element(By.CLASS_NAME, "poly-component__headline").text
                         ),
                         "Precio": unidecode(
-                            post.find_element(By.CLASS_NAME, "poly-component__price").text
+                            post.find_element(By.CLASS_NAME, "poly-price__current").text
                         ),
                         "Atributos": unidecode(
                             post.find_element(

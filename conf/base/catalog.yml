@@ -1,7 +1,25 @@
 # filepath: c:\Users\javie\Documents\GitHub\RentaPtoMonttWebScrapingPython-DashbPowerBi\conf\base\catalog.yml
+# Dataset de entrada del scraper
 raw_arriendos:
   type: pandas.ExcelDataset
   filepath: data/01_raw/arriendos_puerto_montt.xlsx
 
+# Dataset para el valor de la UF (en memoria)
 uf_value:
-  type: MemoryDataset # Se guarda en memoria para la ejecución
+  type: MemoryDataset
+
+# Datasets intermedios (en memoria para eficiencia)
+df_with_cleaned_text:
+  type: MemoryDataset
+df_with_separated_attributes:
+  type: MemoryDataset
+df_with_converted_prices:
+  type: MemoryDataset
+
+# Dataset final procesado (guardado en Excel)
+processed_arriendos:
+  type: pandas.ExcelDataset
+  filepath: data/02_intermediate/arriendos_puerto_montt_processed.xlsx
+  # Puedes añadir opciones adicionales si lo necesitas, por ejemplo:
+  # save_args:
+  #   index: False
