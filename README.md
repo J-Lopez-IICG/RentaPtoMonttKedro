@@ -22,64 +22,85 @@ El proyecto se organiza en los siguientes pipelines principales:
 
 El resultado final de este pipeline es un dataset limpio y estructurado (`data/02_intermediate/arriendos_puerto_montt_processed.xlsx`) listo para el análisis y la visualización.
 
-### Carpeta `notebooks`
-
-La carpeta `notebooks` contiene los Jupyter Notebooks utilizados durante la fase de desarrollo y exploración de datos. Estos notebooks sirven como un "laboratorio" interactivo para probar ideas, depurar funciones y documentar el proceso de diseño de los nodos del pipeline.
-
-**Para que un tercero pueda ver tus notebooks**, simplemente necesita clonar este repositorio de Git. Los archivos `.ipynb` son parte del código fuente del proyecto y se comparten como cualquier otro archivo. No son ejecutados directamente por el pipeline de Kedro, sino que son recursos de desarrollo y documentación.
-
 ## Resultados y Visualización
 
-El dataset final procesado (`data/02_intermediate/arriendos_puerto_montt_processed.xlsx`) se utiliza como fuente de datos para un dashboard interactivo en Power BI, el cual permite un análisis detallado del mercado de arriendos en Puerto Montt.
+El dataset final procesado se utiliza como fuente de datos para un dashboard interactivo en Power BI.
+
+[**Ver Dashboard de Arriendos Puerto Montt en Power BI**](https://app.powerbi.com/view?r=eyJrIjoiYWNmMDJkYWMtNzQzYy00Y2Y1LWIwY2QtYmVkYTVhODYzMWZkIiwidCI6ImRmNGI2MzcyLWEwM2EtNDZmMC05YmY1LTdmOGQzNzhhMzMzNCIsImMiOjR9)
 
 ### Principales Hallazgos del Dashboard
-
-El análisis visual de los datos revela varias tendencias clave en el mercado inmobiliario de la ciudad:
 
 *   **Volumen de Datos:** Se procesaron inicialmente cerca de 600 registros, filtrando por arrendamientos de casas y departamentos para obtener un conjunto de datos final de **329 publicaciones** para el análisis.
 *   **Precio por Metro Cuadrado:** El m² de una **casa es notablemente más económico que el de un departamento**. Aunque el arriendo promedio de un departamento es más bajo, este ofrece una superficie mucho menor, posicionando a las casas como una opción más rentable en términos de espacio/precio.
 *   **Impacto de los Dormitorios en el Precio:** Se observa que el precio de arriendo tiende a disminuir en propiedades que superan los **3 dormitorios**.
 *   **Distribución de Baños:** Las propiedades con **2 baños** dominan el mercado, siendo significativamente más numerosas que las que cuentan con 3 baños.
 
-Puedes explorar el dashboard interactivo para un análisis más profundo y filtrar los datos según tus intereses:
+---
 
-[Dashboard de Arriendos Puerto Montt en Power BI](https://app.powerbi.com/view?r=eyJrIjoiYWNmMDJkYWMtNzQzYy00Y2Y1LWIwY2QtYmVkYTVhODYzMWZkIiwidCI6ImRmNGI2MzcyLWEwM2EtNDZmMC05YmY1LTdmOGQzNzhhMzMzNCIsImMiOjR9)
+## Instalación y Ejecución
 
-## Reglas y Directrices
+Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local.
 
-Para aprovechar al máximo esta plantilla:
+### 1. Clonar el Repositorio
 
-*   No elimines ninguna línea del archivo `.gitignore` que proporcionamos.
-*   Asegúrate de que tus resultados puedan ser reproducidos siguiendo una convención de ingeniería de datos.
-*   No subas datos a tu repositorio.
-*   No subas ninguna credencial o tu configuración local a tu repositorio. Mantén todas tus credenciales y configuración local en `conf/local/`.
+Primero, clona este repositorio en tu máquina.
 
-## Cómo instalar dependencias
+```bash
+git clone https://github.com/J-Lopez-IICG/RentaPtoMonttWebScrapingPython-DashbPowerBi.git
+cd RentaPtoMonttWebScrapingPython-DashbPowerBi
+```
 
-Declara cualquier dependencia en `requirements.txt` para la instalación con `pip`.
+### 2. Crear y Activar un Entorno Virtual
 
-Para instalarlas, ejecuta:
+Es una práctica recomendada utilizar un entorno virtual para aislar las dependencias de este proyecto y evitar conflictos con otros proyectos de Python en tu sistema.
+
+```bash
+# Crear el entorno virtual
+python -m venv venv
+
+# Activar en Windows (PowerShell)
+.\venv\Scripts\Activate.ps1
+
+# Activar en macOS/Linux
+# source venv/bin/activate
+```
+
+### 3. Instalar Dependencias
+
+Una vez que el entorno virtual esté activado, instala todas las librerías necesarias, incluyendo Kedro, con el siguiente comando.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Cómo ejecutar tu pipeline Kedro
+### 4. Ejecutar el Pipeline
 
-Puedes ejecutar tu proyecto Kedro con:
+Con las dependencias instaladas, puedes ejecutar el pipeline completo con un solo comando.
 
 ```bash
 kedro run
 ```
 
-## Dependencias del Proyecto
+Esto ejecutará todos los nodos en secuencia y generará el dataset final en `data/02_intermediate/`.
 
-Para ver y actualizar los requisitos de dependencia de tu proyecto, usa `requirements.txt`. Puedes instalar los requisitos del proyecto con `pip install -r requirements.txt`.
+---
 
-[Más información sobre las dependencias del proyecto](https://docs.kedro.org/en/stable/kedro_project_setup/dependencies.html#project-specific-dependencies)
+## Desarrollo con Notebooks
 
-## Cómo trabajar con Kedro y notebooks
+La carpeta `notebooks` contiene los Jupyter Notebooks utilizados durante la fase de exploración y desarrollo.
 
-> Nota: Usar `kedro jupyter` o `kedro ipython` para ejecutar tu notebook proporciona estas variables en el ámbito: `context`, `session`, `catalog` y `pipelines`.
->
-> Jupyter, JupyterLab e IPython ya están incluidos en los requisitos del proyecto por defecto, así que una vez que hayas ejecutado `pip install -r requirements.txt` no necesitarás realizar ningún paso adicional antes de usarlos.
+Para trabajar con ellos de forma interactiva dentro del contexto de Kedro, ejecuta:
+
+```bash
+kedro jupyter lab
+# o también
+kedro jupyter notebook
+```
+
+> **Nota**: Al usar estos comandos, Kedro inicia el notebook con las variables `context`, `session`, `catalog` y `pipelines` ya cargadas, facilitando la interacción con los datos y funciones del proyecto.
+
+## Reglas y Directrices
+
+*   No elimines ninguna línea del archivo `.gitignore`.
+*   No subas datos al repositorio (la carpeta `data/` está ignorada por defecto).
+*   No subas credenciales o configuraciones locales. Mantenlas en la carpeta `conf/local/`.
