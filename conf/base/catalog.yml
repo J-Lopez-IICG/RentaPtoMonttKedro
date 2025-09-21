@@ -1,4 +1,7 @@
-# filepath: conf/base/catalog.yml
+# filepath: c:\Users\javie\Documents\GitHub\RentaPtoMonttWebScrapingPython-DashbPowerBi\conf\base\catalog.yml
 raw_arriendos:
   type: pandas.ExcelDataset
   filepath: data/01_raw/arriendos_puerto_montt.xlsx
+
+uf_value:
+  type: MemoryDataset # Se guarda en memoria para la ejecución

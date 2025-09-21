@@ -1,5 +1,0 @@
-selenium
-pandas
-unidecode
-webdriver-manager
-openpyxl
