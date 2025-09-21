@@ -1,5 +1,11 @@
+# filepath: requirements.txt
+ipython>=8.10
+jupyterlab>=3.0
+notebook
+kedro
 selenium
 pandas
 unidecode
 webdriver-manager
 openpyxl
+kedro-datasets[pandas]
