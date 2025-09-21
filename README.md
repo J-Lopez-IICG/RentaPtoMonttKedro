@@ -30,11 +30,20 @@ La carpeta `notebooks` contiene los Jupyter Notebooks utilizados durante la fase
 
 ## Resultados y Visualización
 
-El dataset final procesado (`data/02_intermediate/arriendos_puerto_montt_processed.xlsx`) se utiliza como fuente de datos para un dashboard interactivo en Power BI.
+El dataset final procesado (`data/02_intermediate/arriendos_puerto_montt_processed.xlsx`) se utiliza como fuente de datos para un dashboard interactivo en Power BI, el cual permite un análisis detallado del mercado de arriendos en Puerto Montt.
 
-Puedes explorar el dashboard de Power BI con los datos de arriendos de Puerto Montt en el siguiente enlace:
+### Principales Hallazgos del Dashboard
 
-[Dashboard de Arriendos Puerto Montt en Power BI](https://app.powerbi.com/view?r=eyJrIjoiZmEzMTI5OTctNDA2Zi00MTMyLWJiZjEtY2E3ZjI2MWEzZTI4IiwidCI6ImRmNGI2MzcyLWEwM2EtNDZmMC05YmY1LTdmOGQzNzhhMzMzNCIsImMiOjR9)
+El análisis visual de los datos revela varias tendencias clave en el mercado inmobiliario de la ciudad:
+
+*   **Volumen de Datos:** Se procesaron inicialmente cerca de 600 registros, filtrando por arrendamientos de casas y departamentos para obtener un conjunto de datos final de **329 publicaciones** para el análisis.
+*   **Precio por Metro Cuadrado:** El m² de una **casa es notablemente más económico que el de un departamento**. Aunque el arriendo promedio de un departamento es más bajo, este ofrece una superficie mucho menor, posicionando a las casas como una opción más rentable en términos de espacio/precio.
+*   **Impacto de los Dormitorios en el Precio:** Se observa que el precio de arriendo tiende a disminuir en propiedades que superan los **3 dormitorios**.
+*   **Distribución de Baños:** Las propiedades con **2 baños** dominan el mercado, siendo significativamente más numerosas que las que cuentan con 3 baños.
+
+Puedes explorar el dashboard interactivo para un análisis más profundo y filtrar los datos según tus intereses:
+
+[Dashboard de Arriendos Puerto Montt en Power BI](https://app.powerbi.com/view?r=eyJrIjoiYWNmMDJkYWMtNzQzYy00Y2Y1LWIwY2QtYmVkYTVhODYzMWZkIiwidCI6ImRmNGI2MzcyLWEwM2EtNDZmMC05YmY1LTdmOGQzNzhhMzMzNCIsImMiOjR9)
 
 ## Reglas y Directrices
 
