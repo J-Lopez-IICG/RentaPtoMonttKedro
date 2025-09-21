@@ -2,13 +2,13 @@
 
 [![Powered by Kedro](https://img.shields.io/badge/powered_by-kedro-ffc900?logo=kedro)](https://kedro.org)
 
-## Overview
+## Visión General
 
 Este proyecto Kedro está diseñado para automatizar la extracción, limpieza y transformación de datos de arriendos inmobiliarios en Puerto Montt, Chile. La información se obtiene mediante web scraping de PortalInmobiliario.com y se procesa para generar un dataset estructurado y limpio, listo para ser consumido por herramientas de Business Intelligence como Power BI, facilitando así un análisis detallado del mercado de arriendos.
 
 El proyecto utiliza el framework modular y reproducible de Kedro para asegurar la calidad de los datos y la fiabilidad del pipeline.
 
-## Project Structure
+## Estructura del Proyecto
 
 El proyecto se organiza en los siguientes pipelines principales:
 
@@ -20,96 +20,57 @@ El proyecto se organiza en los siguientes pipelines principales:
     *   Normalización de columnas de texto (ej. título, ubicación, tipo de hogar).
     *   Selección de las columnas finales y eliminación de registros con valores nulos o inconsistentes en el precio.
 
-El resultado final es un dataset limpio y estructurado (`data/02_intermediate/arriendos_puerto_montt_processed.xlsx`) listo para el análisis y la visualización.
+El resultado final de este pipeline es un dataset limpio y estructurado (`data/02_intermediate/arriendos_puerto_montt_processed.xlsx`) listo para el análisis y la visualización.
 
-## Rules and guidelines
+### Carpeta `notebooks`
 
-In order to get the best out of the template:
+La carpeta `notebooks` contiene los Jupyter Notebooks utilizados durante la fase de desarrollo y exploración de datos. Estos notebooks sirven como un "laboratorio" interactivo para probar ideas, depurar funciones y documentar el proceso de diseño de los nodos del pipeline.
 
-*   Don't remove any lines from the `.gitignore` file we provide
-*   Make sure your results can be reproduced by following a data engineering convention
-*   Don't commit data to your repository
-*   Don't commit any credentials or your local configuration to your repository. Keep all your credentials and local configuration in `conf/local/`
+**Para que un tercero pueda ver tus notebooks**, simplemente necesita clonar este repositorio de Git. Los archivos `.ipynb` son parte del código fuente del proyecto y se comparten como cualquier otro archivo. No son ejecutados directamente por el pipeline de Kedro, sino que son recursos de desarrollo y documentación.
 
-## How to install dependencies
+## Resultados y Visualización
 
-Declare any dependencies in `requirements.txt` for `pip` installation.
+El dataset final procesado (`data/02_intermediate/arriendos_puerto_montt_processed.xlsx`) se utiliza como fuente de datos para un dashboard interactivo en Power BI.
 
-To install them, run:
+Puedes explorar el dashboard de Power BI con los datos de arriendos de Puerto Montt en el siguiente enlace:
+
+[Dashboard de Arriendos Puerto Montt en Power BI](https://app.powerbi.com/view?r=eyJrIjoiZmEzMTI5OTctNDA2Zi00MTMyLWJiZjEtY2E3ZjI2MWEzZTI4IiwidCI6ImRmNGI2MzcyLWEwM2EtNDZmMC05YmY1LTdmOGQzNzhhMzMzNCIsImMiOjR9)
+
+## Reglas y Directrices
+
+Para aprovechar al máximo esta plantilla:
+
+*   No elimines ninguna línea del archivo `.gitignore` que proporcionamos.
+*   Asegúrate de que tus resultados puedan ser reproducidos siguiendo una convención de ingeniería de datos.
+*   No subas datos a tu repositorio.
+*   No subas ninguna credencial o tu configuración local a tu repositorio. Mantén todas tus credenciales y configuración local en `conf/local/`.
+
+## Cómo instalar dependencias
+
+Declara cualquier dependencia en `requirements.txt` para la instalación con `pip`.
+
+Para instalarlas, ejecuta:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## How to run your Kedro pipeline
+## Cómo ejecutar tu pipeline Kedro
 
-You can run your Kedro project with:
+Puedes ejecutar tu proyecto Kedro con:
 
 ```bash
 kedro run
 ```
 
-## How to test your Kedro project
+## Dependencias del Proyecto
 
-Have a look at the file `tests/test_run.py` for instructions on how to write your tests. You can run your tests as follows:
+Para ver y actualizar los requisitos de dependencia de tu proyecto, usa `requirements.txt`. Puedes instalar los requisitos del proyecto con `pip install -r requirements.txt`.
 
-```bash
-pytest
-```
+[Más información sobre las dependencias del proyecto](https://docs.kedro.org/en/stable/kedro_project_setup/dependencies.html#project-specific-dependencies)
 
-You can configure the coverage threshold in your project's `pyproject.toml` file under the `[tool.coverage.report]` section.
+## Cómo trabajar con Kedro y notebooks
 
-
-## Project dependencies
-
-To see and update the dependency requirements for your project use `requirements.txt`. You can install the project requirements with `pip install -r requirements.txt`.
-
-[Further information about project dependencies](https://docs.kedro.org/en/stable/kedro_project_setup/dependencies.html#project-specific-dependencies)
-
-## How to work with Kedro and notebooks
-
-> Note: Using `kedro jupyter` or `kedro ipython` to run your notebook provides these variables in scope: `context`, 'session', `catalog`, and `pipelines`.
+> Nota: Usar `kedro jupyter` o `kedro ipython` para ejecutar tu notebook proporciona estas variables en el ámbito: `context`, `session`, `catalog` y `pipelines`.
 >
-> Jupyter, JupyterLab, and IPython are already included in the project requirements by default, so once you have run `pip install -r requirements.txt` you will not need to take any extra steps before you use them.
-
-### Jupyter
-To use Jupyter notebooks in your Kedro project, you need to install Jupyter:
-
-```bash
-pip install jupyter
-```
-
-After installing Jupyter, you can start a local notebook server:
-
-```bash
-kedro jupyter notebook
-```
-
-### JupyterLab
-To use JupyterLab, you need to install it:
-
-```bash
-pip install jupyterlab
-```
-
-You can also start JupyterLab:
-
-```bash
-kedro jupyter lab
-```
-
-### IPython
-And if you want to run an IPython session:
-
-```bash
-kedro ipython
-```
-
-### How to ignore notebook output cells in `git`
-To automatically strip out all output cell contents before committing to `git`, you can use tools like [`nbstripout`](https://github.com/kynan/nbstripout). For example, you can add a hook in `.git/config` with `nbstripout --install`. This will run `nbstripout` before anything is committed to `git`.
-
-> *Note:* Your output cells will be retained locally.
-
-## Package your Kedro project
-
-[Further information about building project documentation and packaging your project](https://docs.kedro.org/en/stable/tutorial/package_a_project.html)
+> Jupyter, JupyterLab e IPython ya están incluidos en los requisitos del proyecto por defecto, así que una vez que hayas ejecutado `pip install -r requirements.txt` no necesitarás realizar ningún paso adicional antes de usarlos.
