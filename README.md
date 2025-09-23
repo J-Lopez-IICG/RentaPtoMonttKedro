@@ -4,7 +4,7 @@
 
 ## Visión General
 
-Este proyecto Kedro está diseñado para automatizar la extracción, limpieza y transformación de datos de arriendos inmobiliarios en Puerto Montt, Chile. La información se obtiene mediante web scraping de PortalInmobiliario.com y se procesa para generar un dataset estructurado y limpio, listo para ser consumido por herramientas de Business Intelligence como Power BI, facilitando así un análisis detallado del mercado de arriendos.
+Este proyecto Kedro está diseñado para automatizar la extracción, limpieza y transformación de datos de arriendos inmobiliarios en Puerto Montt, Chile. La información se obtiene mediante web scraping de PortalInmobiliario.com y se procesa para generar un dataset estructurado y limpio usando python, listo para ser consumido por herramientas de Business Intelligence como Power BI, facilitando así un análisis detallado del mercado de arriendos.
 
 El proyecto utiliza el framework modular y reproducible de Kedro para asegurar la calidad de los datos y la fiabilidad del pipeline.
 
