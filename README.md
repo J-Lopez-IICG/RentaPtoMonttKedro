@@ -40,7 +40,7 @@ El dataset final procesado se utiliza como fuente de datos para un dashboard int
 
 * **Normalización de Precios (UF y CLP)**: Se integró una API financiera para obtener el valor diario de la UF y se desarrolló una lógica condicional para identificar la moneda de cada publicación y convertir todos los precios a una unidad común, permitiendo una comparación precisa.
 
-* **Manejo de Datos Inconsistentes**: Se implementaron pasos de validación para convertir precios a formato numérico y eliminar sistemáticamente registros con valores nulos o inválidos (ej. "Consultar"), garantizando la fiabilidad del dataset final.
+* **Manejo de Datos Inconsistentes**: Se implementaron pasos de validación para convertir precios a formato numérico y eliminar sistemáticamente registros con valores nulos o inválidos, garantizando la fiabilidad del dataset final.
 
 ### Principales Hallazgos del Dashboard
 
