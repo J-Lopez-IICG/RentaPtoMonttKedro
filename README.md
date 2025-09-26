@@ -24,6 +24,20 @@ El resultado final de este pipeline es un dataset limpio y estructurado (`data/0
 
 ## Resultados y Visualización
 
+Durante el desarrollo del pipeline, se abordaron varios desafíos técnicos clave para garantizar la calidad y fiabilidad de los datos:
+
+Scraping Robusto y Anti-Bloqueo: PortalInmobiliario.com cuenta con medidas para detectar y limitar el tráfico automatizado. Para superar esto, el scraper del pipeline data_engineering fue diseñado para simular el comportamiento de un navegador real, incluyendo User-Agents en las cabeceras de las solicitudes y aplicando pausas estratégicas entre peticiones. Esto aseguró una extracción de datos exitosa sin ser bloqueado, además de implementar una lógica robusta para navegar a través de la paginación del sitio y recopilar la totalidad de los listados.
+
+Extracción y Estandarización de Atributos: Los datos crudos extraídos contenían información clave (como número de baños, dormitorios y superficie) en formato de texto no estructurado (ej. "3 dormitorios", "120 m²"). En el pipeline data_processing, se utilizaron expresiones regulares (regex) y funciones de limpieza de texto para extraer con precisión los valores numéricos y estandarizarlos en columnas dedicadas, convirtiendo datos cualitativos en cuantitativos y listos para el análisis.
+
+Normalización de Precios (UF y CLP): Uno de los mayores retos fue manejar los precios de arriendo, que se publican tanto en Pesos Chilenos (CLP) como en Unidades de Fomento (UF). Para crear una base de comparación financiera coherente, se implementó una solución en dos pasos:
+
+Se integró una API financiera externa para obtener el valor de la UF actualizado diariamente.
+
+Se desarrolló una lógica condicional que identifica la moneda de cada publicación y convierte los precios a una unidad común, permitiendo un análisis de mercado preciso y eliminando la distorsión causada por la fluctuación de la UF.
+
+Manejo de Datos Inconsistentes y Nulos: Las publicaciones a menudo contenían valores faltantes o inconsistentes, especialmente en el precio (ej. "Consultar"). Para asegurar la integridad del dataset final, se implementaron pasos de validación que convierten los precios a formato numérico y eliminan sistemáticamente los registros nulos o inválidos. Este filtro fue crucial para garantizar que el análisis en Power BI se basara únicamente en datos completos y fiables.
+
 El dataset final procesado se utiliza como fuente de datos para un dashboard interactivo en Power BI.
 
 [**Ver Dashboard de Arriendos Puerto Montt en Power BI**](https://app.powerbi.com/view?r=eyJrIjoiYWNmMDJkYWMtNzQzYy00Y2Y1LWIwY2QtYmVkYTVhODYzMWZkIiwidCI6ImRmNGI2MzcyLWEwM2EtNDZmMC05YmY1LTdmOGQzNzhhMzMzNCIsImMiOjR9)
@@ -46,8 +60,8 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local.
 Primero, clona este repositorio en tu máquina.
 
 ```bash
-git clone https://github.com/J-Lopez-IICG/RentaPtoMonttWebScrapingPython-DashbPowerBi.git
-cd RentaPtoMonttWebScrapingPython-DashbPowerBi
+git clone https://github.com/J-Lopez-IICG/RentaPtoMonttKedro.git
+cd RentaPtoMonttKedro
 ```
 
 ### 2. Crear y Activar un Entorno Virtual
