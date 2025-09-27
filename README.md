@@ -32,6 +32,13 @@ El dataset final procesado se utiliza como fuente de datos para un dashboard int
 
 [**Ver Dashboard de Arriendos Puerto Montt en Power BI**](https://app.powerbi.com/view?r=eyJrIjoiYWNmMDJkYWMtNzQzYy00Y2Y1LWIwY2QtYmVkYTVhODYzMWZkIiwidCI6ImRmNGI2MzcyLWEwM2EtNDZmMC05YmY1LTdmOGQzNzhhMzMzNCIsImMiOjR9)
 
+### Principales Hallazgos del Dashboard
+
+* **Volumen de Datos:** Se procesaron inicialmente cerca de 600 registros, filtrando por casas y departamentos para obtener un conjunto final de **329 publicaciones** para el análisis.
+* **Precio por Metro Cuadrado:** El m² de una **casa es notablemente más económico que el de un departamento**. Aunque el arriendo promedio de un departamento es más bajo, este ofrece menos superficie, posicionando a las casas como una opción más rentable en términos de espacio/precio.
+* **Impacto de los Dormitorios en el Precio:** Se observa que el precio de arriendo tiende a disminuir en propiedades que superan los **3 dormitorios**.
+* **Distribución de Baños:** Las propiedades con **2 baños** dominan el mercado, siendo significativamente más numerosas que las que cuentan con 3 o más baños.
+
 ### Desafíos Técnicos Solucionados
 
 * **Scraping Robusto y Anti-Bloqueo**: Para superar las medidas de seguridad de PortalInmobiliario.com, el scraper fue diseñado para simular comportamiento humano, usando `User-Agents` y pausas estratégicas entre peticiones. Se implementó también una lógica robusta para navegar la paginación del sitio y recopilar todos los listados.
@@ -41,13 +48,6 @@ El dataset final procesado se utiliza como fuente de datos para un dashboard int
 * **Normalización de Precios (UF y CLP)**: Se integró una API financiera para obtener el valor diario de la UF y se desarrolló una lógica condicional para identificar la moneda de cada publicación y convertir todos los precios a una unidad común, permitiendo una comparación precisa.
 
 * **Manejo de Datos Inconsistentes**: Se implementaron pasos de validación para convertir precios a formato numérico y eliminar sistemáticamente registros con valores nulos o inválidos, garantizando la fiabilidad del dataset final.
-
-### Principales Hallazgos del Dashboard
-
-* **Volumen de Datos:** Se procesaron inicialmente cerca de 600 registros, filtrando por casas y departamentos para obtener un conjunto final de **329 publicaciones** para el análisis.
-* **Precio por Metro Cuadrado:** El m² de una **casa es notablemente más económico que el de un departamento**. Aunque el arriendo promedio de un departamento es más bajo, este ofrece menos superficie, posicionando a las casas como una opción más rentable en términos de espacio/precio.
-* **Impacto de los Dormitorios en el Precio:** Se observa que el precio de arriendo tiende a disminuir en propiedades que superan los **3 dormitorios**.
-* **Distribución de Baños:** Las propiedades con **2 baños** dominan el mercado, siendo significativamente más numerosas que las que cuentan con 3 o más baños.
 
 ---
 
