@@ -1,4 +1,3 @@
-# filepath: c:\Users\javie\Documents\GitHub\RentaPtoMonttWebScrapingPython-DashbPowerBi\conf\base\catalog.yml
 # Dataset de entrada del scraper
 raw_arriendos:
   type: pandas.ExcelDataset
@@ -20,6 +19,3 @@ df_with_converted_prices:
 processed_arriendos:
   type: pandas.ExcelDataset
   filepath: data/02_intermediate/arriendos_puerto_montt_processed.xlsx
-  # Puedes añadir opciones adicionales si lo necesitas, por ejemplo:
-  # save_args:
-  #   index: False

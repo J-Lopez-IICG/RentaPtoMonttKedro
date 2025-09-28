@@ -1,26 +1,9 @@
-# What is this for?
-
-This folder should be used to store configuration files used by Kedro or by separate tools.
-
-This file can be used to provide users with instructions for how to reproduce local configuration with their own credentials. You can edit the file however you like, but you may wish to retain the information below and add your own section in the [Instructions](#Instructions) section.
-
-## Local configuration
-
-The `local` folder should be used for configuration that is either user-specific (e.g. IDE configuration) or protected (e.g. security keys).
-
-> *Note:* Please do not check in any local configuration to version control.
-
-## Base configuration
-
-The `base` folder is for shared configuration, such as non-sensitive and project-related configuration that may be shared across team members.
-
-WARNING: Please do not put access credentials in the base configuration folder.
-
 ## Instructions
 
+### Configuración de `msedgedriver.exe`
 
+Para que el proyecto pueda realizar web scraping, es necesario descargar el controlador para Microsoft Edge.
 
-
-## Need help?
-
-[Find out more about configuration from the Kedro documentation](https://docs.kedro.org/en/stable/kedro_project_setup/configuration.html).
+1.  **Verifica tu versión de Microsoft Edge**: Abre Edge, ve a `Configuración` > `Acerca de Microsoft Edge` y anota el número de la versión.
+2.  **Descarga el controlador**: Ve a la [página oficial de Microsoft Edge Driver](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/) y descarga la versión que corresponda a tu navegador.
+3.  **Ubica el archivo**: Descomprime el archivo y coloca `msedgedriver.exe` dentro de la carpeta `driver/` en la raíz del proyecto. El código está configurado para buscar el driver en esta ubicación, por lo que no necesitas añadir la ruta en los archivos de configuración.
