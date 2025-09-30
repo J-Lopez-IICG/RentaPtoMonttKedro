@@ -30,7 +30,7 @@ El resultado final de este pipeline es un dataset limpio y estructurado (`data/0
 
 El dataset final procesado se utiliza como fuente de datos para un dashboard interactivo en Power BI.
 
-[**Ver Dashboard de Arriendos Puerto Montt en Power BI**](https://app.powerbi.com/view?r=eyJrIjoiYWNmMDJkYWMtNzQzYy00Y2Y1LWIwY2QtYmVkYTVhODYzMWZkIiwidCI6ImRmNGI2MzcyLWEwM2EtNDZmMC05YmY1LTdmOGQzNzhhMzMzNCIsImMiOjR9)
+[**Ver Dashboard de Arriendos Puerto Montt en Power BI: Renta Puerto Montt**](https://app.powerbi.com/view?r=eyJrIjoiYWNmMDJkYWMtNzQzYy00Y2Y1LWIwY2QtYmVkYTVhODYzMWZkIiwidCI6ImRmNGI2MzcyLWEwM2EtNDZmMC05YmY1LTdmOGQzNzhhMzMzNCIsImMiOjR9)
 
 ### Principales Hallazgos del Dashboard
 
