@@ -53,7 +53,7 @@ El dataset final procesado se utiliza como fuente de datos para un dashboard int
 
 ## Instalación y Ejecución
 
-Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local.
+Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local. Se requiere Python 3.11.9.
 
 ### 1. Clonar el Repositorio
 
