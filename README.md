@@ -10,6 +10,12 @@ Durante la fase de transformación, el pipeline limpia y enriquece los datos, co
 
 ---
 
+## Hipótesis
+
+La hipótesis central de este proyecto es que el **tipo de propiedad (casa o departamento) y el número de dormitorios** son los factores más influyentes en el precio de arriendo en Puerto Montt. Se postula que, aunque los departamentos puedan tener un precio de arriendo nominalmente más bajo, las **casas ofrecen un mejor costo por metro cuadrado**, representando una opción más rentable en términos de espacio. Adicionalmente, se espera que propiedades con un número de dormitorios superior a tres presenten una disminución en el precio promedio, debido a una menor demanda en ese segmento del mercado.
+
+---
+
 ## Estructura del Proyecto
 
 El proyecto se organiza en los siguientes pipelines principales:
